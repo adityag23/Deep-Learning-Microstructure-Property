@@ -1,0 +1,14 @@
+function [H_m,H_c]=contributions(net)
+[Xfull] = create_datastores();
+netw = net;
+w = netw.Layers(end-1).Weights;
+b = netw.Layers(end-1).Bias;
+ai = activations(netw,Xfull,'last_fc1');
+af = activations(netw,Xfull,'fc_out_feat');
+ao = activations(netw,Xfull,'fc_out');
+ai3(:) = ai(1,1,1,:);
+af3(:) = af(1,1,1,:);
+ao3(:) = ao(1,1,1,:);
+H_m = w(1)*ai3;
+H_c = w(2)*af3;
+%hreal = cell2mat(readall(hds));
