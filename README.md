@@ -12,8 +12,14 @@ To replicate this work and use the training and interpretation scripts:
 
 3. Use the "batchprocess_images_in.m" function with 'aug' parameter value 0 for non-augmented dataset and value 1 for augmented dataset. The non-augmented image dataset containing resized images (224 x 224) is created with the name "images_original" and the augmented image dataset folder is created with the name "images_augmented".
 
-4. Place all the data folders and files inside the 1_Alloy_Data folder.
+4. Place all the data folders and files inside the 1_Alloy_Data folder. Please retain the organisation tree of all the files and folders, as most of the scripts use the relative file locations. If you wish to change, please modify the filepaths in the scripts appropriately before using.  
 
-# Creating and training the modified DenseNet201 
+# Creating and training the modified DenseNet201 consisting of image inputs only
+1. In the 2_DenseNet_201 folder the create_datastores function creates a combined datastore consisting of an image datastore and an array datastore. The combined datastore is then split into training and validation data using the set of indices specified in "data_split_for_tests.mat" file locataed in the "1_Alloy_Data" folder.
 
+2. After creation of datastores, create the network layers using the create_d201 function. This function generates a layer graph object which can be used for training.
+
+   (OR)
+
+1. Use trainnetwork function to generate datastores, layers and fully trained network.  
 
